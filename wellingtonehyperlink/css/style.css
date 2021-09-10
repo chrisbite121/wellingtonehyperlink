@@ -1,0 +1,59 @@
+:root {
+	--wellHyperlinkHovColour: #4287f5
+}
+
+.wellingtonehyperlink .row {
+    display: flex;
+    padding-left: 0.1em;
+}
+  
+/* .wellingtonehyperlink .columnImage {
+flex: 2%;
+padding: 0.3em;
+} */
+
+.wellingtonehyperlink .columnhyperlink {
+    flex: 98%;
+    padding-top: 0.5em;
+    text-align: left;
+    font-weight: 600;
+    color:black;
+}
+
+.wellingtonehyperlink a:link, a:visited, a:active {
+    color: black;
+    text-decoration:none;
+}
+.wellingtonehyperlink ul li {
+    position: relative;
+    display: inline-block;
+    overflow:hidden;
+}
+.wellingtonehyperlink ul li:hover, ul li:focus {
+    	outline: none;
+}
+.wellingtonehyperlink ul li a {
+    position: relative;
+    display: inline-block;
+    color: #000;
+    font-size:1.5em;
+    text-decoration: none;
+    /* text-transform: uppercase; */
+    font-weight: 400;
+    transition: transform 0.5s ease;
+    -webkit-transition: transform 0.5s ease;
+}
+.wellingtonehyperlink ul li a:before{
+    position: absolute;
+    top: 100%;
+    content: attr(title); /* The selector for Wordpress */
+    color:var(--wellHyperlinkHovColour);
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.wellingtonehyperlink ul li:hover a, ul li:focus a {
+    -webkit-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
