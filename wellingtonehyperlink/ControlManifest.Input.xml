@@ -18,21 +18,15 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="hyperlinkcontrol" display-name-key="Hyperlink_Control" description-key="field to bind hyperlink control to" of-type="SingleLine.Text" usage="bound" required="true" />
-    <property name="urlvalue" display-name-key="URL_Value" description-key="property to hold the url value" of-type="SingleLine.Text" usage="input" required="true" />
+    <!-- <property name="hyperlinkcontrol" display-name-key="Hyperlink_Control" description-key="field to bind hyperlink control to" of-type-group="fieldtypes" usage="bound" required="true" /> -->
+    <property name="urlvalue" display-name-key="URL_Value" description-key="property to hold the url value" of-type-group="fieldtypes" usage="bound" required="true" />
     <property name="displayvalue" display-name-key="Display_Value" description-key="property to hold the display value" of-type="SingleLine.Text" usage="input" required="true" />
     <property name="hovercolour" display-name-key="Hovercolour_Value" description-key="property to hold the hovercolour value" of-type="SingleLine.Text" usage="input" required="true" />
-    <!-- 
-      Property node's of-type attribute can be of-type-group attribute. 
-      Example:
-      <type-group name="numbers">
-        <type>Whole.None</type>
-        <type>Currency</type>
-        <type>FP</type>
-        <type>Decimal</type>
+      <type-group name="fieldtypes">
+        <type>SingleLine.URL</type>
+        <type>SingleLine.Text</type>
       </type-group>
-      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
-    -->
+
     <resources>
       <code path="index.ts" order="1"/>
       <css path="css/style.css" order="2" />

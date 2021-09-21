@@ -46,37 +46,44 @@ export class wellingtonehyperlink implements ComponentFramework.StandardControl<
 		_hyperlink.id = "wellingtonehyperlink";
 
 		let _hyperlinkValue = '';
-		if(context.parameters.urlvalue?.raw !== null)
+		if(context.parameters.displayvalue?.raw !== null &&
+			(<string>context.parameters.displayvalue?.raw).length > 0 &&
+			context.parameters.urlvalue?.raw !== null &&
+			(<string>context.parameters.urlvalue?.raw).length > 0
+		)
+
+		{
 			_hyperlinkValue = context.parameters.urlvalue?.raw;
 
-		_hyperlink.href = _hyperlinkValue;
+			_hyperlink.href = _hyperlinkValue;
 
-		let _displayValue = '';
-		if(context.parameters.displayvalue?.raw !== null)
-			_displayValue = context.parameters.displayvalue?.raw;
+			let _displayValue = '';
 
-		_hyperlink.innerText = _displayValue;
-		_hyperlink.title = _displayValue;
-		
-		_hyperlink.setAttribute("target", "_blank");
+				_displayValue = context.parameters.displayvalue?.raw;
 
-		let _ul = document.createElement('ul');
-		let _li = document.createElement('li');
+			_hyperlink.innerText = _displayValue;
+			_hyperlink.title = _displayValue;
+			
+			_hyperlink.setAttribute("target", "_blank");
 
-		//li and ul required for styling of hyperlink, see css
-		_li.appendChild(_hyperlink)
-		_ul.appendChild(_li)
+			let _ul = document.createElement('ul');
+			let _li = document.createElement('li');
 
-		var root = document.querySelector(':root');
+			//li and ul required for styling of hyperlink, see css
+			_li.appendChild(_hyperlink)
+			_ul.appendChild(_li)
 
-		let _hoverColour = context.parameters.hovercolour?.raw
-		if(root && _hoverColour){
-			var rootStyles = getComputedStyle(root as any);
-			//var hovColour= rootStyles.getPropertyValue('--hovColour');
-			(<any>root).style.setProperty('--wellHyperlinkHovColour', _hoverColour);
+			var root = document.querySelector(':root');
+
+			let _hoverColour = context.parameters.hovercolour?.raw
+			if(root && _hoverColour){
+				// var rootStyles = getComputedStyle(root as any);
+				//var hovColour= rootStyles.getPropertyValue('--hovColour');
+				(<any>root).style.setProperty('--wellHyperlinkHovColour', _hoverColour);
+			}
+
+			this._hyperlinkContainer.appendChild(_ul);
 		}
-
-		this._hyperlinkContainer.appendChild(_ul);
 	}
 
 	/**
